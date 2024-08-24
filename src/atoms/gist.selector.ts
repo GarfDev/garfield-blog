@@ -1,4 +1,4 @@
-import { atom, selectorFamily } from "recoil";
+import { selectorFamily } from "recoil";
 import GistService from "../services/github.service";
 import { GITHUB_USERNAME } from "../configs/environment";
 import { IGist } from "../types/gist";

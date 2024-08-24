@@ -15,7 +15,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@lexical/markdown": "^0.17.0",
     "@lexical/react": "^0.17.0",
+    "@lexical/table": "^0.17.0",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.4",
     "gatsby": "^5.13.5",
@@ -24,6 +26,7 @@
     "postcss": "^8.4.41",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.3.0",
     "recoil": "^0.7.7",
     "tailwindcss": "^3.4.10"
   },

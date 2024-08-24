@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 .title-gradient {
-  @apply bg-gradient-to-r from-yellow-200 to-orange-500 bg-clip-text text-[transparent]
+  @apply duration-200 bg-gradient-to-r from-yellow-200 to-orange-500 bg-clip-text text-[transparent]
+}
+
+.editor-tooltip-btn {
+  @apply text-white hover:scale-110 duration-75 
 }

@@ -1,19 +1,25 @@
-import { Link } from 'gatsby';
 import React from 'react';
+import { Link } from 'gatsby';
+import { useRecoilValue } from 'recoil';
+
+import githubAuthorSelector from '../atoms/github-profile.selector';
 
 interface Props {
   className?: string;
 }
 
 const Nav = ({ className }: Props) => {
+
+  const author = useRecoilValue(githubAuthorSelector)
+
   return <nav className={'w-full flex justify-between ' + className}>
-    <Link to='/' className='duration-[200ms] ease-in-out hover:scale-[1.02]'>
-      <p className={'text-2xl font-black title-gradient'}>meocam</p>
+    <Link to='/' className='duration-[200ms] flex items-center ease-in-out hover:scale-[1.02]'>
+      <p className={'text-2xl font-black title-gradient'}>{author.name}</p>
     </Link>
 
-    <div className='flex items-end'>
+    <div className='flex items-center select-none'>
       <span className='mr-1 text-sm font-thin'>by</span>
-      <img className='rounded-full' src="https://avatars.githubusercontent.com/u/54764688?s=400&u=ad8a2a34d2cdce1c699fc36164b8bee838682f46&v=4" width={25} />
+      <img className='rounded-full' src={author.avatar_url} width={25} />
     </div>
   </nav>
 }

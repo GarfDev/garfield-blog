@@ -20,11 +20,6 @@ const IndexPage: React.FC<PageProps> = () => {
     <Layout>
       <div className="content h-[max-content]">
         {gists.map((gist) => <Gist key={gist.id} data={gist} />)}
-        {gists.map((gist) => <Gist key={gist.id} data={gist} />)}
-        {gists.map((gist) => <Gist key={gist.id} data={gist} />)}
-        {gists.map((gist) => <Gist key={gist.id} data={gist} />)}
-        {gists.map((gist) => <Gist key={gist.id} data={gist} />)}
-
       </div>
     </Layout>
   )

@@ -9,9 +9,10 @@ const IndexRoute = ({ path, params }: PageProps) => {
 
   return (
     <Layout>
-      <main className='min-h-[100vh] bg-black'>
-        <h1>Path: {id}</h1>
-        <Editor />
+      <main className='min-h-[100vh] '>
+        <div className='w-full min-h-[300px]'>
+          <Editor />
+        </div>
       </main>
     </Layout>
   )

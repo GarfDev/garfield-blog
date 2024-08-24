@@ -1,0 +1,91 @@
+import React from 'react';
+import {
+  $convertFromMarkdownString,
+  $convertToMarkdownString,
+  registerMarkdownShortcuts,
+  TRANSFORMERS,
+} from '@lexical/markdown';
+
+import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
+import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
+import { LexicalComposer } from '@lexical/react/LexicalComposer';
+import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
+import { ContentEditable } from '@lexical/react/LexicalContentEditable';
+import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
+import { HeadingNode, QuoteNode } from '@lexical/rich-text';
+import { CodeNode } from '@lexical/code';
+import { ListItemNode, ListNode } from '@lexical/list';
+import { LinkNode } from '@lexical/link';
+
+import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
+import EditorTheme from '../../configs/editor-theme';
+import ToolbarPlugin from '../plugins/ToolbarPlugin';
+
+import './index.css'
+import { createEditor } from 'lexical';
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
+
+// Catch any errors that occur during Lexical updates and log them
+// or throw them as needed. If you don't throw them, Lexical will
+// try to recover gracefully without losing user data.
+function onError(error: Error) {
+  console.error(error);
+}
+
+function Editor() {
+
+
+  const initialConfig = {
+    nodes: [
+      HeadingNode,
+      QuoteNode,
+      CodeNode,
+      ListNode,
+      ListItemNode,
+      LinkNode,
+    ],
+    namespace: 'Meocam Editor',
+    theme: EditorTheme,
+    onError,
+  };
+
+
+
+  return (
+    <LexicalComposer initialConfig={{ ...initialConfig }}>
+      <div className="editor-container text-white">
+        <ToolbarPlugin />
+        <div className="editor-inner">
+          <RichTextPlugin
+            contentEditable={
+              <EditorEditable />
+            }
+            ErrorBoundary={LexicalErrorBoundary}
+          />
+          <HistoryPlugin />
+          <AutoFocusPlugin />
+          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+        </div>
+      </div>
+    </LexicalComposer>
+  );
+}
+
+export default Editor;
+
+const EditorEditable = () => {
+
+  const [editor] = useLexicalComposerContext();
+
+  registerMarkdownShortcuts(editor, TRANSFORMERS);
+
+  return (
+    <ContentEditable
+      className="editor-input text-white placeholder-white"
+      aria-placeholder={"Meocam"}
+      placeholder={
+        <div className="editor-placeholder text-gray-500">Viết gì đi ông già</div>
+      }
+    />
+  )
+}

@@ -14,4 +14,10 @@ const fetchList = async (username: string, options: FetchListOptions | undefined
   return response.data || [];
 };
 
-export default { fetchList };
+const fetchUserInfo = async (username: string) => {
+  const response = await client.get(`/users/${username}`, {});
+  return response.data;
+
+}
+
+export default { fetchList, fetchUserInfo };
