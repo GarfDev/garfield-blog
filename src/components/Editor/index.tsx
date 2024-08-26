@@ -31,7 +31,11 @@ function onError(error: Error) {
   console.error(error);
 }
 
-function Editor() {
+interface Props {
+  defaultValue?: string;
+}
+
+function Editor({ defaultValue = "" }: Props) {
 
 
   const initialConfig = {
@@ -51,7 +55,9 @@ function Editor() {
 
 
   return (
-    <LexicalComposer initialConfig={{ ...initialConfig }}>
+    <LexicalComposer initialConfig={{ ...initialConfig, editorState: (editor) => {
+      
+    } }}>
       <div className="editor-container text-white">
         <ToolbarPlugin />
         <div className="editor-inner">

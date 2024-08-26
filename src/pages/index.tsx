@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRecoilValue } from "recoil";
 import { navigate, type HeadFC, type PageProps } from "gatsby";
 
-import gistListSelector from "../atoms/gist.selector";
+import gistListSelector from "../atoms/gist-list.selector";
 import Layout from "../components/Layout";
 import Gist from "../components/Gist";
 

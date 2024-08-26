@@ -1,5 +1,6 @@
 import React from 'react';
 import { IGist } from '../types/gist';
+import { Link } from 'gatsby';
 
 interface Props {
   data: IGist;
@@ -18,6 +19,7 @@ const Gist = ({ data }: Props) => {
 
 
   return (
+    <Link to={`/${data.id}`}>
     <div key={data.id} className='flex flex-col my-12 cursor-pointer select-none'>
       <p className="mb-1 text-3xl font-black first-letter:capitalize title-gradient">{title}</p>
       <p className='text-sm mb-2 opacity-40'>
@@ -28,6 +30,8 @@ const Gist = ({ data }: Props) => {
         {data.description}
       </p>
     </div>
+
+    </Link>
   )
 }
 

@@ -8,15 +8,16 @@ type SelectorMapper<Type> = {
 };
 
 interface GistFetchProps {
-  id: string;
+  page: number;
+  limit: number;
 }
 
-const gistSelector = selectorFamily<IGist, SelectorMapper<GistFetchProps>>({
+const gistListSelector = selectorFamily<IGist[], SelectorMapper<Partial<GistFetchProps>>>({
   key: "gist",
-  get: ({ id }) => async () => {
-    const gists = await GistService.fetch(id);
-    return gists as IGist;
+  get: ({ page, limit }) => async () => {
+    const gists = await GistService.fetchList(GITHUB_USERNAME, { page, limit });
+    return gists as IGist[];
   },
 });
 
-export default gistSelector;
+export default gistListSelector;

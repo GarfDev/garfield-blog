@@ -25,6 +25,7 @@ export interface IGistFile {
   language: string;
   raw_url: string;
   size: number;
+  content: string;
 }
 
 export interface IGistOwner {
