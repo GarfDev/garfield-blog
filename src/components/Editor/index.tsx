@@ -1,29 +1,28 @@
-import React from 'react';
 import {
   $convertFromMarkdownString,
   $convertToMarkdownString,
   registerMarkdownShortcuts,
   TRANSFORMERS,
 } from '@lexical/markdown';
+import React from 'react';
 
-import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
+import { CodeNode } from '@lexical/code';
+import { LinkNode } from '@lexical/link';
+import { ListItemNode, ListNode } from '@lexical/list';
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
-import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
+import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
+import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { HeadingNode, QuoteNode } from '@lexical/rich-text';
-import { CodeNode } from '@lexical/code';
-import { ListItemNode, ListNode } from '@lexical/list';
-import { LinkNode } from '@lexical/link';
 
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
-import EditorTheme from '../../configs/editor-theme';
-import ToolbarPlugin from '../plugins/ToolbarPlugin';
+import ToolbarPlugin from './plugins/ToolbarPlugin';
+import EditorTheme from './theme';
 
-import './index.css'
-import { createEditor } from 'lexical';
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
+import './index.css';
 
 // Catch any errors that occur during Lexical updates and log them
 // or throw them as needed. If you don't throw them, Lexical will

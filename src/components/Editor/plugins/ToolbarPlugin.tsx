@@ -18,19 +18,11 @@ import {
   SELECTION_CHANGE_COMMAND,
   UNDO_COMMAND,
 } from 'lexical';
-import React from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import { CiRedo } from "react-icons/ci";
-import { CiUndo } from "react-icons/ci";
-import { FaAlignCenter, FaAlignJustify, FaAlignLeft, FaAlignRight, FaBold } from "react-icons/fa";
-import { FaItalic } from "react-icons/fa";
-import { FaUnderline } from "react-icons/fa";
-import { FaStrikethrough } from "react-icons/fa";
-import { MdFormatAlignLeft } from "react-icons/md";
-import { MdFormatAlignCenter } from "react-icons/md";
-import { MdFormatAlignRight } from "react-icons/md";
-import { MdFormatAlignJustify } from "react-icons/md";
+import { CiRedo, CiUndo } from "react-icons/ci";
+import { FaBold, FaItalic, FaStrikethrough, FaUnderline } from "react-icons/fa";
+import { MdFormatAlignCenter, MdFormatAlignJustify, MdFormatAlignLeft, MdFormatAlignRight } from "react-icons/md";
 
 
 const LowPriority = 1;
