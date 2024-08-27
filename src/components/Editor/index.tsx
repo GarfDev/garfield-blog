@@ -47,7 +47,7 @@ function Editor({ defaultValue = "" }: Props) {
       ListItemNode,
       LinkNode,
     ],
-    namespace: 'Meocam Editor',
+    namespace: 'ABCS',
     theme: EditorTheme,
     onError,
   };
