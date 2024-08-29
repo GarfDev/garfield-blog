@@ -14,6 +14,9 @@ import Layout from '../components/Layout';
 
 const markdownClassname = {
   '*': 'my-2',
+  'li': 'ml-5',
+  'code': 'rounded-md p-1 bg-gray-700',
+  'blockquote': 'border-l-4 pl-3 border-orange-400 text-gray-400',
   'h1': 'text-6xl my-6 font-bold title-gradient',
   'h2': 'text-5xl my-5 font-bold title-gradient',
   'h3': 'text-4xl my-4 font-bold title-gradient',
@@ -22,10 +25,12 @@ const markdownClassname = {
   'h6': 'text-xl font-bold title-gradient',
   'a': 'visited:text-gray-500 font-bold cursor-pointer hover:text-gray-300 duration-100',
   'pre': 'rounded-md p-2 !bg-gray-700 [&_pre]:!bg-gray-700 [&_pre]:!font-bold',
-  'hr': 'title-gradient',
+  'hr': 'border-t-[3px] border-orange-300',
   'ol': 'list-decimal ml-7 list-outside',
   'ul': 'list-disc list-inside',
-  'li': 'ml-5'
+  'table': 'table-auto border-collapse border border-slate-500',
+  'th': 'p-2 border border-slate-500',
+  'td': 'p-2 border border-slate-500'
 }
 
 const IndexRoute = ({ path, params }: PageProps) => {
@@ -42,10 +47,9 @@ const IndexRoute = ({ path, params }: PageProps) => {
       <main className='min-h-[100vh] '>
         <div className='w-full min-h-[300px]'>
           <Markdown
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[remarkGfm, remarkGemoji]}
             remarkRehypeOptions={{ passThrough: ['link'] }}
             rehypePlugins={[
-              remarkGemoji,
               rehypeAccessibleEmojis,
               [rehypeClassNames, markdownClassname],
               supersub
